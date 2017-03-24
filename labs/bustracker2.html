@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Bus Tracker</title>
+
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+  <style> 
+
+  #rt152{
+
+    background-color: #1e2d56;
+
+    border: #961225 1px;
+
+    padding: 5px;
+
+    border-radius:2px;
+
+  }
+
+  #rt49{
+
+    background-color: #1e2d56;
+
+    border: solid black 1px;
+
+    padding: 5px;
+
+    border-radius:2px;
+
+  }
+
+  #rtX49{
+
+    background-color: #1e2d56;
+
+    border: solid black 1px;
+
+    padding: 5px;
+
+    border-radius:2px;
+
+  }
+
+  #rt52{
+
+    background-color: #1e2d56;
+
+    border: solid black 1px;
+
+    padding: 5px;
+
+    border-radius:2px;
+
+  }
+  
+  
+
+  #submit{border-radius:2px;} 
+ 
+
+  </style>
+
+</head>
+
+
+
+
+
+<body>
+ 
+   <h1 style="color:#9e8411;">Bus Tracker</h1>
+ 
+ <p style="color:#700108;">Find Bus Route, Direction and Arrival Time</p>
+ <style>
+ .button {
+    background-color: #c61f13; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+   
+ </style>
+ <button class="button">Bus Routes</button></center>
+ 
+ <br>
+ 
+ <div id="rt152"></div>
+ 
+ <div id="rtX49"></div>
+ 
+ <div id="rt49"></div>
+ 
+ <div id="rt52"></div>
+     
+     
+     
+     
+     
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      
+      <script>
+     
+     
+     
+      $("#rt49").hide()
+      
+      $("#rtX49").hide()
+      
+      $("#rt152").hide()
+      
+      $("#rt52").hide()
+      
+      $("#submit").click(function() {
+         
+         $("#rt49").empty().show()
+         
+         $("#rtX49").empty().show()
+         
+         $("#rt152").empty().show()
+         
+         $("#rt52").empty().show()
+          
+         
+         
+         
+         
+         
+         
+          var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+          
+          var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getpredictions";
+          
+          
+          
+          
+          
+          $.ajax({
+             
+              url: apiPassThruUrl,
+             
+              dataType: "json",
+             
+              method: 'GET',
+             
+              data: {"apiEndpoint": apiEndpoint,
+             
+                      "key" : "KhHu3t3zvni9DBfzVexjqtzqs",
+             
+                      "format":"json",
+             
+                      "rt":"49,X49,152,52",
+             
+                      "stpid":"8417,12527,15231"
+              }
+           
+           
+           
+            }).done (function (data) {
+             
+              console.log(data);
+             
+             $("#rt49").append("<h2>Bus 49</h2>")
+             
+             $("#rtX49").append("<h2>Bus X49</h2>")
+             
+             $("#rt152").append("<h2>Bus 152</h2>")
+             
+             $("#rt52").append("<h2>Bus 52</h2>")
+              
+              $.each(data["bustime-response"]["prd"], function(i,v) {
+                  
+                  $("#rt" + v.rt).append("Route Number: " + v.rt
+                  
+                  +  "<br>" 
+                  
+                  + "Route Direction: " + v.rtdir 
+                  
+                  + "<br>"
+                  
+                  + "Bus Stop: " + v.stpnm  
+                  
+                  + "<br>"
+                  
+                  +  "Time left until arrival: " + v.prdctdn 
+                  
+                  + "<hr>");
+              });
+
+            });
+        });
+           
+         
+  
+</script>
+ 
+</body>
+</html>

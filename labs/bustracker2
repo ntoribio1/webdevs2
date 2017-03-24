@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.parseXML demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ <p>Press the buttons to see buses near Lane Tech that can take you home.</p>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script>
+        $(function() {
+          
+          
+          var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+          
+          var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getroutes";
+          
+          
+          $.ajax({
+              url: apiPassThruUrl,
+              dataType: "json",
+              method: 'GET',
+              data: {"apiEndpoint": apiEndpoint,
+                      "key" : "yam3mQaEAaVpZBEJ8kHpmfsET",
+                      "format":"json",
+                  "stpid":"152"
+              }
+            }).done (function (data) {
+              console.log(data);
+              $("body").append("<h1>Bus Routes</h1>");
+             
+              $.each(data["bustime-response"]["routes"], function(i,v) {
+                  $("body").append("Route #" + v.rt + ", " + v.rtnm + "<br>");
+                
+              })
+
+            });
+        });
+            
+  
+</script>
+ 
+</body>
+</html>

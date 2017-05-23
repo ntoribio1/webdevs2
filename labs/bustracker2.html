@@ -6,7 +6,7 @@
 
   <meta charset="utf-8">
 
-  <title>Bus Tracker</title>
+  <title>CtaBusTrackerApp</title>
 
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
@@ -14,9 +14,9 @@
 
   #rt152{
 
-    background-color: #1e2d56;
+    background-color: white;
 
-    border: #961225 1px;
+    border: solid black 1px;
 
     padding: 5px;
 
@@ -26,7 +26,7 @@
 
   #rt49{
 
-    background-color: #1e2d56;
+    background-color: white;
 
     border: solid black 1px;
 
@@ -38,7 +38,7 @@
 
   #rtX49{
 
-    background-color: #1e2d56;
+    background-color: white;
 
     border: solid black 1px;
 
@@ -50,7 +50,7 @@
 
   #rt52{
 
-    background-color: #1e2d56;
+    background-color: white;
 
     border: solid black 1px;
 
@@ -62,8 +62,7 @@
   
   
 
-  #submit{border-radius:2px;} 
- 
+  #submit{border-radius:2px;}
 
   </style>
 
@@ -75,25 +74,11 @@
 
 <body>
  
-   <h1 style="color:#9e8411;">Bus Tracker</h1>
+   <h1 style="color:red;">CtaBusTrackerApp</h1>
  
- <p style="color:#700108;">Find Bus Route, Direction and Arrival Time</p>
- <style>
- .button {
-    background-color: #c61f13; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-   
- </style>
- <button class="button">Bus Routes</button></center>
+ <p>Press the button to see the time for a bus to reach the stop</p>
+ 
+ <button id="submit">View Busses</button></center>
  
  <br>
  
@@ -157,7 +142,7 @@
              
               data: {"apiEndpoint": apiEndpoint,
              
-                      "key" : "KhHu3t3zvni9DBfzVexjqtzqs",
+                      "key" : "YRyyQ5ibjDfRiZ5pZ9rzqmKiM",
              
                       "format":"json",
              

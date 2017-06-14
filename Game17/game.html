@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+   
+    
+  </head>
+  <body>
+     
+     <canvas id="myCanvas" width="850" height="400"
+style="border:5px solid #4fc7ff;">
+</canvas>
+    
+    <div id="buttons">
+      <input type="button" id="clear" value="Clear">
+    </div>
+    
+    
+    <script>
+      var canvas = document.querySelector("#myCanvas");
+      var context = canvas.getContext("2d");
+      var livesRemaining = 3;
+      var score = 0;
+      var level = 1;
+      var paused = false;
+      var player = {x: 0, y: 0, costume: ""};
+      var harm = {x: 0, y: 0, costume: "", speed: 1};
+      var benefit = {x: 0, y: 0, costume: "", speed: 1};
+      var background= new Image();
+      background.src="http://wallpapercave.com/wp/JzfvVHJ.jpg";
+      backgroundX=0;
+      backgroundY=0;
+      /*
+      
+        main animation loop
+      
+      */
+      function animate() {
+        // clear canvas
+      document.getElementById('clear').addEventListener('click', function() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+      }, false); 
+    
+       
+        
+        // update harm and benefit x coordinates
+        
+        // draw background
+        context.drawImage(background,backgroundX,backgroundY,850,400);
+        
+        
+        // draw player
+        
+        // draw harm 
+        
+        // check for and handle edge condition
+        
+        // check for and handle harm collision
+      
+        // draw benefit
+        
+        // check for and handle edge condition
+        
+        // check for benefit collision
+        
+        // draw text (lives and score)
+        
+        
+        //  if the game has not been paused, 
+        if (!paused) {
+          requestAnimationFrame(animate);
+        }
+        
+      }
+      
+      animate();
+      
+      //  event handler for moving player
+      //    use onKeyPress event, and change the player.y value based on the up/down keysscript src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).keydown(function(e){
+    switch (e.which){
+    case 37:    //left arrow key
+        $(".box").finish().animate({
+            left: "-=50"
+        });
+        break;
+    case 38:    //up arrow key
+        $(".box").finish().animate({
+            top: "-=50"
+        });
+        break;
+    case 39:    //right arrow key
+        $(".box").finish().animate({
+            left: "+=50"
+        });
+        break;
+    case 40:    //bottom arrow key
+        $(".box").finish().animate({
+            top: "+=50"
+        });
+        break;
+    }
+});
+</script>
+    
+    
+  </body>
+</html>
